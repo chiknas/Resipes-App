@@ -1,6 +1,7 @@
 package com.chiknas.recipe.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * created by NikosK on 12/1/2019
@@ -19,6 +20,10 @@ public class Recipe {
     private String url;
     private String directions;
     //private Difficulty difficulty;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
+
     @Lob
     private Byte[] image;
 
