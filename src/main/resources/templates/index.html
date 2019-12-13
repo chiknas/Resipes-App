@@ -5,6 +5,16 @@
     <title>Recipe Home2</title>
 </head>
 <body>
-<h1 th:text="nikos">My Recipes</h1>
+<h1 th:text="'My Recipes'">Recipes</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+    </tr>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.getId()}">ID</td>
+        <td th:text="${recipe.getDescription()}">Description</td>
+    </tr>
+</table>
 </body>
 </html>

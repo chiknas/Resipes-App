@@ -1,6 +1,11 @@
 package com.chiknas.recipe.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,7 +20,7 @@ public class Category {
     private String description;
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Recipe> recipes;
+    private Set<Recipe> recipes = new HashSet<>();
 
     public Long getId() {
         return id;
