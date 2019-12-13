@@ -1,7 +1,6 @@
 package com.chiknas.recipe.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
