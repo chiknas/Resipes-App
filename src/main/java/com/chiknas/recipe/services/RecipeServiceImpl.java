@@ -2,6 +2,7 @@ package com.chiknas.recipe.services;
 
 import com.chiknas.recipe.model.Recipe;
 import com.chiknas.recipe.repositories.RecipeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.Set;
  * com.chiknas.recipe.services.RecipeServiceImpl, created on 13/12/2019 15:27 <p>
  * @author NikolaosK
  */
+@Slf4j
 @Service
 public class RecipeServiceImpl implements RecipeService {
 
