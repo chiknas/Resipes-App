@@ -1,4 +1,6 @@
 # Recipe App
+# Example:
+[![Resipes-App](https://circleci.com/gh/chiknas/Resipes-App.svg?style=svg)](https://circleci.com/gh/chiknas/Resipes-App)
 
 ### Technologies used
 For further reference, please consider the following sections:
