@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,17 +27,19 @@ class RecipeServiceImplTest {
 
     @Mock
     RecipeRepository recipeRepository;
+    Recipe recipe;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
         recipeService = new RecipeServiceImpl(recipeRepository);
+
+        recipe = new Recipe();
+        recipe.setDescription("emptyrecipe");
     }
 
     @Test
     void getRecipes() {
-        Recipe recipe = new Recipe();
-        recipe.setDescription("emptyrecipe");
         List<Recipe> results = new ArrayList<>();
         results.add(recipe);
 
@@ -45,5 +48,14 @@ class RecipeServiceImplTest {
 
         assertEquals(recipes.size(), 1);
         verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    void findById(){
+        when(recipeRepository.findById(any())).thenReturn(Optional.ofNullable(recipe));
+        Recipe byId = recipeService.findById(1L);
+        assertEquals(byId.getDescription(), recipe.getDescription());
+        verify(recipeRepository, times(1)).findById(any());
+
     }
 }
