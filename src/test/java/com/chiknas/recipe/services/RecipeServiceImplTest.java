@@ -1,6 +1,7 @@
 package com.chiknas.recipe.services;
 
 import com.chiknas.recipe.model.Recipe;
+import com.chiknas.recipe.repositories.IngredientRepository;
 import com.chiknas.recipe.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,12 +28,14 @@ class RecipeServiceImplTest {
 
     @Mock
     RecipeRepository recipeRepository;
+    @Mock
+    IngredientRepository ingredientRepository;
     Recipe recipe;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, ingredientRepository);
 
         recipe = new Recipe();
         recipe.setDescription("emptyrecipe");
