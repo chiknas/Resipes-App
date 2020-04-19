@@ -1,11 +1,14 @@
 package com.chiknas.recipe.controllers;
 
+import com.chiknas.recipe.model.Recipe;
 import com.chiknas.recipe.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RecipeController {
@@ -21,5 +24,17 @@ public class RecipeController {
     public String getRecipeDetails(@PathVariable Long id, Model model){
         model.addAttribute("recipe", recipeService.findById(id));
         return "recipe/details";
+    }
+
+    @GetMapping("/recipe/new")
+    public String getRecipeForm(Model model){
+        model.addAttribute("recipe", new Recipe());
+        return "recipe/form";
+    }
+
+    @PostMapping("/recipe/save")
+    public String saveUpdateRecipe(@ModelAttribute Recipe recipe){
+        Recipe savedRecipe = recipeService.saveRecipe(recipe);
+        return "redirect:/recipe/details/" + savedRecipe.getId();
     }
 }

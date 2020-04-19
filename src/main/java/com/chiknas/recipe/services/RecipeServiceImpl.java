@@ -35,4 +35,8 @@ public class RecipeServiceImpl implements RecipeService {
   public Recipe findById(Long id) {
     return recipeRepository.findById(id).orElseThrow(() -> new RuntimeException("Recipe was not found"));
   }
+
+  public Recipe saveRecipe(Recipe recipe){
+    return recipeRepository.save(recipe);
+  }
 }
