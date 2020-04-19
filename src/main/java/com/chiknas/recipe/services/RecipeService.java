@@ -12,4 +12,5 @@ public interface RecipeService {
   Set<Recipe> getRecipes();
   Recipe findById(Long id);
   Recipe saveRecipe(Recipe recipe);
+  void deleteRecipe(Long id);
 }

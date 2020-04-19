@@ -36,7 +36,13 @@ public class RecipeServiceImpl implements RecipeService {
     return recipeRepository.findById(id).orElseThrow(() -> new RuntimeException("Recipe was not found"));
   }
 
+  @Override
   public Recipe saveRecipe(Recipe recipe){
     return recipeRepository.save(recipe);
+  }
+
+  @Override
+  public void deleteRecipe(Long id) {
+    recipeRepository.deleteById(id);
   }
 }
